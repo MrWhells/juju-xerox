@@ -772,3 +772,13 @@ body {
         display: flex;
     }
 }
+.footer-col a[href*="wa.me"] {
+    color: #8B008B; /* Verde oficial do WhatsApp */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-col a[href*="wa.me"]:hover {
+    filter: brightness(0.9); /* Escurece levemente ao passar o mouse */
+    text-decoration: underline;
+}
