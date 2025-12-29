@@ -716,3 +716,59 @@ body {
         gap: 30px;
     }
 }
+/* --- CONFIGURAÇÃO ESPECÍFICA DO MENU HAMBÚRGUER --- */
+
+/* 1. Esconde o ícone no computador */
+.mobile-menu-icon {
+    display: none;
+}
+
+/* 2. Regras para o Celular */
+@media (max-width: 768px) {
+    .mobile-menu-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 3100; /* Fica acima de tudo */
+    }
+
+    .mobile-menu-icon span {
+        width: 100%;
+        height: 3px;
+        background-color: #8B008B; /* Roxo da sua marca */
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    /* O Menu vira uma gaveta que vem da direita */
+    .nav-menu {
+        position: fixed;
+        right: -100%; /* Começa escondido fora da tela */
+        top: 0;
+        width: 70%;
+        height: 100vh;
+        background-color: white;
+        z-index: 2500;
+        transition: 0.4s ease-in-out;
+        padding-top: 80px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        display: block !important; /* Garante que o menu exista no mobile */
+    }
+
+    /* Quando clicamos, ele desliza para a tela */
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        display: flex;
+    }
+}
