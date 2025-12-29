@@ -20,3 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Inicia o loop de transição
     setInterval(changeBackgroundImage, intervalTime);
 });
+function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    // Adiciona ou remove a classe 'active' que controla a posição no CSS
+    menu.classList.toggle('active');
+}

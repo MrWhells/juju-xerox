@@ -1,3 +1,17 @@
+html {
+    scroll-behavior: smooth;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 70px; /* Mantenha isso se o seu menu for fixo */
+    overflow-x: hidden;
+}
+
 body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -588,4 +602,117 @@ body {
 @keyframes aumentar-diminuir {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.03); }
+}
+/* --- Estilos do Header --- */
+.main-header {
+    position: fixed;
+    top: 0; /* Garante que comece no limite superior */
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    background-color: rgba(255, 255, 255, 0.98); /* Quase opaco para esconder o fundo */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* Remova qualquer margem que possa existir aqui */
+    margin: 0; 
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo do Logo no Menu */
+.logo-juju { color: #8B008B; font-weight: bold; font-size: 1.5em; }
+.logo-xerox { color: #333; font-weight: bold; font-size: 1.5em; }
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    margin: 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #8B008B; /* Cor Roxa do seu logo */
+}
+
+/* Botão de destaque no menu */
+.btn-nav-contato {
+    background-color: #28a745;
+    color: white !important;
+    padding: 8px 18px;
+    border-radius: 5px;
+    transition: background 0.3s !important;
+}
+
+.btn-nav-contato:hover {
+    background-color: #218838 !important;
+}
+
+/* Ajuste para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+    padding-top: 70px; /* Altura aproximada do menu */
+}
+
+/* Mobile: Esconde o menu ou ajusta para telas pequenas */
+@media (max-width: 768px) {
+    .nav-menu { display: none; } /* Em LPs simples, é comum esconder o menu no mobile ou usar um ícone hambúrguer */
+}
+/* --- Estilos do Botão Hambúrguer --- */
+.mobile-menu-icon {
+    display: none; /* Escondido no Desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+.mobile-menu-icon span {
+    width: 100%;
+    height: 3px;
+    background-color: #8B008B; /* Roxo do seu logo */
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+/* --- Responsividade (Media Query) --- */
+@media (max-width: 768px) {
+    .mobile-menu-icon {
+        display: flex; /* Mostra no celular */
+    }
+
+    .nav-menu {
+        position: fixed;
+        right: -100%; /* Escondido fora da tela */
+        top: 70px;
+        width: 70%;
+        height: 100vh;
+        background-color: white;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: 0.4s;
+        z-index: 2500;
+    }
+
+    .nav-menu.active {
+        right: 0; /* Desliza para dentro da tela */
+    }
+
+    .nav-menu ul {
+        flex-direction: column; /* Itens um embaixo do outro */
+        padding-top: 50px;
+        gap: 30px;
+    }
 }
