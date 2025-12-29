@@ -1,0 +1,591 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        /* --- Estilos do Hero Section --- */
+       /* --- ESTILOS GERAIS DA HERO SECTION --- */
+#hero {
+    position: relative; /* 1. Ponto de Referência para Absolutos */
+    overflow: hidden; 
+    padding: 80px 20px;
+    color: white; 
+    text-align: center;
+    background-color: #007bff; /* Cor de fallback */
+}
+
+/* --- CAMADA DE FUNDO (Z-INDEX: 1) --- */
+.hero-carousel-bg {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* O mais baixo (fundo) */
+}
+
+/* Imagens individuais */
+.hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; /* Invisível por padrão */
+    transition: opacity 1.5s ease-in-out; /* Transição suave */
+}
+
+/* Imagem ativa (visível) */
+.hero-bg-image.active {
+    opacity: 1;
+}
+
+/* --- OVERLAY ESCURO (Z-INDEX: 2) --- */
+.hero-carousel-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Preto com 60% de opacidade */
+    z-index: 2; /* Acima do Fundo (1) */
+}
+
+/* --- CONTEÚDO PRINCIPAL (Z-INDEX: 3) --- */
+.hero-content {
+    position: relative; /* Essencial para que o z-index funcione */
+    z-index: 3; /* O mais alto (frente) */
+}
+
+/* Adicionando as correções de responsividade para o H1 aqui, por segurança */
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 1.7em !important; 
+        line-height: 1.2;
+    }
+    #hero h1 span {
+        font-size: 1em !important;
+    }
+}
+        /* --- Media Query: Telas com 768px ou Menos (Mobile/Tablet) --- */
+@media (max-width: 768px) {
+    /* ... (outras regras de mobile aqui) ... */
+
+    /* CORREÇÃO DE ESPECIFICIDADE PARA O H1 */
+    /* Apontamos especificamente para o H1 dentro da seção #hero */
+    #hero h1 { 
+        font-size: 1.7em !important; /* Usamos !important para FORÇAR a prioridade */
+        line-height: 1.2;
+    }
+
+    
+    /* Regra para garantir que o span interno não quebre o tamanho */
+    #hero h1 span {
+        font-size: 1em !important; /* Garante que o span use 100% do novo H1 reduzido */
+    }
+
+    /* ... (o restante das regras de mobile) ... */
+}
+        
+        #hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #28a745; /* Cor de Destaque (Verde para CTA) */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #218838;
+        }
+        /* --- Estilos da Seção de Serviços --- */
+        #servicos {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .servico-card-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .servico-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex: 1;
+            text-align: left;
+        }
+        .servico-card h3 {
+            color: #007bff;
+        }
+        /* --- Estilos do Formulário (CTA Final) --- */
+        #contato {
+            background-color: #C8A2C8;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .form-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .form-content label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-content input[type="text"], 
+        .form-content input[type="email"],
+        .form-content select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-content button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        /* --- Estilos da Seção de Localização (Mapa) --- */
+        #localizacao {
+            padding: 60px 20px;
+            background-color: #ffffff;
+        }
+        .map-embed-container {
+            margin-top: 30px;
+            overflow: hidden; /* Garante que o iframe se ajuste */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .map-embed-container iframe {
+            display: block; /* Remove espaços extras */
+        }
+        /* --- Estilos do Rodapé (Footer) --- */
+        footer {
+            background-color: #C8A2C8; /* Cinza Escuro - Fundo do Rodapé */
+            color: white;
+            padding: 40px 20px 0;
+            font-size: 0.9em;
+        }
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Permite que as colunas quebrem no mobile */
+            padding-bottom: 30px;
+            border-bottom: 1px solid #495057; /* Linha sutil antes do copyright */
+        }
+        .footer-col {
+            width: 30%; /* Ajuste a largura das colunas */
+            margin-bottom: 20px;
+        }
+        .footer-col h3 {
+            color: #ffc107; /* Amarelo/Destaque */
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .footer-col p {
+            margin: 5px 0;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-col ul li a {
+            color: black; /* Cinza Claro para links */
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        .footer-col ul li a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        .footer-copyright {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #212529; /* Fundo mais escuro para a linha final */
+        }
+
+        /* Adaptação básica para telas pequenas (Mobile) */
+        @media (max-width: 768px) {
+            .footer-grid {
+                flex-direction: column;
+            }
+            .footer-col {
+                width: 100%;
+                margin-bottom: 25px;
+            }
+        }
+        /* --- Estilos do Botão Flutuante do WhatsApp --- */
+.whatsapp-float {
+    position: fixed; /* Fixa o elemento na tela */
+    width: 60px;
+    height: 60px;
+    bottom: 30px; /* Distância da parte inferior da tela */
+    right: 30px; /* Distância da lateral direita da tela */
+    background-color: #25d366; /* Verde do WhatsApp */
+    color: #fff;
+    border-radius: 50px; /* Transforma em círculo */
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1); /* Efeito sutil ao passar o mouse */
+}
+
+.whatsapp-icon {
+    width: 35px; /* Tamanho do ícone SVG */
+    height: 35px;
+    /* Inverte a cor do SVG de branco (padrão do link) para que fique visível, 
+       mas como estamos usando uma imagem SVG completa do WhatsApp, 
+       esta regra é mais para segurança visual. */
+}
+
+/* Ajuste para telas menores (mobile) */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+    .whatsapp-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+/* --- 1. Regras do Botão Flutuante (Atualizadas) --- */
+.whatsapp-float {
+    /* Mantemos as regras de posicionamento e design originais */
+    position: fixed; 
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366; 
+    color: #fff;
+    border-radius: 50px; 
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Garante que o link não tenha sublinhado */
+    
+    /* ADICIONADO: Propriedade essencial para o pseudo-elemento */
+    position: fixed; 
+}
+
+/* --- 2. Criação do Anel Pulsante (Pseudo-elemento ::before) --- */
+.whatsapp-float::before {
+    content: ""; /* Essencial para pseudo-elementos */
+    display: block;
+    position: absolute;
+    /* Faz o anel ser um pouco maior que o botão */
+    width: 80px; 
+    height: 80px;
+    margin-left: -10px; /* Centraliza o anel (80px - 60px)/2 = 10px */
+    margin-top: -10px;
+    background-color: rgba(37, 211, 102, 0.7); /* Verde mais claro e transparente */
+    border-radius: 50%;
+    
+    /* CHAMA A ANIMAÇÃO CRIADA ABAIXO */
+    animation: pulse 1.5s infinite; /* Nome da animação, duração, e loop infinito */
+    z-index: -1; /* Coloca o anel ATRÁS do botão */
+}
+
+/* --- 3. Definição da Animação (Keyframes) --- */
+/* Esta regra deve ser adicionada fora de qualquer outra classe, no final do seu CSS */
+@keyframes pulse {
+    0% {
+        transform: scale(0.6); /* Começa menor */
+        opacity: 0.8; /* Totalmente opaco */
+    }
+    50% {
+        transform: scale(1.1); /* Expande */
+        opacity: 0.2; /* Fica transparente */
+    }
+    100% {
+        transform: scale(1.3); /* Expande um pouco mais (ou zera a escala) */
+        opacity: 0; /* Desaparece */
+    }
+}
+
+/* Ajustes mobile para o anel */
+@media (max-width: 768px) {
+    .whatsapp-float::before {
+        width: 70px; 
+        height: 70px;
+        margin-left: -10px; 
+        margin-top: -10px;
+    }
+}
+/* --- Estilos da Seção de Vantagens --- */
+#vantagens {
+    padding: 60px 20px;
+    background-color: #ffffff; /* Fundo branco para destacar do cinza */
+    text-align: center;
+}
+#vantagens h2 {
+    color: #007bff; /* Cor Primária */
+    margin-bottom: 40px;
+}
+.vantagem-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+.vantagem-item {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.vantagem-item:hover {
+    transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.1); /* Sombra azul sutil */
+}
+.icon-vantagem {
+    font-size: 3em; /* Tamanho do emoji/ícone */
+    display: block;
+    margin-bottom: 10px;
+}
+.vantagem-item h3 {
+    font-size: 1.3em;
+    color: #333;
+}
+.vantagem-item p {
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* Adaptação básica para telas pequenas (Mobile) */
+@media (max-width: 768px) {
+    .vantagem-grid {
+        flex-direction: column;
+    }
+    .vantagem-item {
+        margin-bottom: 15px;
+    }
+}
+/* --- Media Query: Telas com 768px ou Menos (Mobile/Tablet) --- */
+@media (max-width: 768px) {
+    /* 1. Alinha os cards de Serviço e Vantagens em coluna (empilhamento) */
+    .servico-card-container,
+    .vantagem-grid {
+        flex-direction: column;
+    }
+    
+    /* 2. Garante que os cards ocupem 100% da largura em telas pequenas */
+    .servico-card,
+    .vantagem-item {
+        width: 100%; /* Ocupa a largura total */
+        margin-bottom: 20px;
+    }
+    
+    /* 3. Ajusta o container principal para telas menores */
+    .container {
+        width: 90%; /* Aumenta a margem, dando mais ar */
+    }
+}
+/* --- Estilos da Seção de Depoimentos --- */
+#depoimentos {
+    padding: 60px 20px;
+    background-color: #f4f7f6; /* Fundo cinza claro para diferenciar */
+    text-align: center;
+}
+#depoimentos h2 {
+    color: #333;
+    margin-bottom: 40px;
+}
+.depoimento-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.depoimento-card {
+    flex: 1;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-top: 5px solid #ffc107; /* Linha de destaque (Amarelo) */
+    text-align: left;
+}
+.depoimento-texto {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1.05em;
+}
+.depoimento-autor {
+    font-weight: bold;
+    color: #007bff; /* Azul Primário para destacar a autoria */
+    margin-top: 10px;
+    border-top: 1px dashed #eee;
+    padding-top: 10px;
+}
+
+/* Adaptação para Mobile (Empilhar Cards) */
+@media (max-width: 768px) {
+    .depoimento-grid {
+        flex-direction: column;
+    }
+    .depoimento-card {
+        margin-bottom: 20px;
+    }
+}
+/* Estilos Específicos para o Quadro de Links */
+.links-uteis-card {
+    text-align: left; /* Alinha o texto da lista à esquerda */
+    min-height: 250px; /* Garante que o card de links tenha uma altura mínima, alinhando-o aos outros */
+}
+
+.links-uteis-card .lista-links {
+    list-style: none; /* Remove os marcadores de lista padrão */
+    padding: 0;
+    margin-top: 20px;
+}
+
+.links-uteis-card .lista-links li {
+    margin-bottom: 10px;
+}
+
+.links-uteis-card .lista-links a {
+    color: #007bff; /* Cor Primária do seu site */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.links-uteis-card .lista-links a:hover {
+    color: #0056b3; /* Cor mais escura ao passar o mouse */
+    text-decoration: underline;
+}
+/* --- Estilos da Seção de Aviso de Segurança --- */
+
+
+#aviso-seguranca h3 {
+    color: #dc3545; /* Cor Vermelha para o Título */
+    margin-bottom: 30px;
+}
+
+.aviso-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #dc3545;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto; /* Centraliza a caixa na tela */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.aviso-box p strong {
+    color: #dc3545; /* Negrito em vermelho para o ALERTA */
+    font-size: 1.1em;
+}
+
+.lista-aviso {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.lista-aviso li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 0.95em;
+    color: #333;
+}
+
+/* Ícone de Ponto de Exclamação ao lado dos itens da lista */
+.lista-aviso li::before {
+    content: "❗"; 
+    position: absolute;
+    left: 0;
+    color: #ffc107; /* Amarelo de atenção */
+}
+/* 1. Animação de Borda Pulsante no Box */
+.box-alerta-dinamico {
+    border: 2px solid #dc3545;
+    animation: borda-pulsante 2s infinite; /* Borda que brilha sozinha */
+    transition: transform 0.3s ease;
+}
+
+/* 2. Efeito de vibração suave no texto de "ATENÇÃO" */
+.atencao-shake {
+    display: inline-block;
+    animation: shake-suave 4s infinite;
+}
+
+/* --- KEYFRAMES (As regras do movimento) --- */
+
+/* Faz a borda brilhar entre vermelho e transparente */
+@keyframes borda-pulsante {
+    0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+/* Faz o texto de alerta dar uma leve balançada a cada 4 segundos */
+@keyframes shake-suave {
+    0%, 90%, 100% { transform: translateX(0); }
+    92% { transform: translateX(-3px); }
+    94% { transform: translateX(3px); }
+    96% { transform: translateX(-3px); }
+    98% { transform: translateX(3px); }
+}
+
+/* Faz o título "Aviso Importante" pulsar levemente em tamanho */
+.pulso-texto {
+    animation: aumentar-diminuir 3s infinite ease-in-out;
+}
+
+@keyframes aumentar-diminuir {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
