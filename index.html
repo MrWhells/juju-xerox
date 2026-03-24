@@ -26,7 +26,7 @@
                 <li><a href="#servicos" onclick="toggleMenu()">Serviços</a></li>
                 <li><a href="#vantagens" onclick="toggleMenu()">Vantagens</a></li>
                 <li><a href="#localizacao" onclick="toggleMenu()">Onde Estamos</a></li>
-                <li><a href="#contato" class="btn-nav-contato" onclick="toggleMenu()">Orçamento</a></li>
+                <li><a href="#contato" class="btn-nav-contato" onclick="toggleMenu()">Whatsapp</a></li>
             </ul>
         </nav>
     </div>
@@ -104,7 +104,7 @@
             <ul class="lista-aviso">
                 <li>O **CNPJ** ou **CPF** do beneficiário deve ser o mesmo cadastrado em nosso atendimento via WhatsApp.</li>
                 <li>Nossa equipe **nunca** solicita pagamentos diretos a contas de terceiros (somente contas empresariais oficiais).</li>
-                <li>Em caso de dúvida ou divergência, **interrompa o pagamento imediatamente** e entre em contato conosco pelos canais oficiais (Telefone ou WhatsApp) antes de finalizar a transação.</li>
+                <li>Em caso de dúvida ou divergência, **interrompa o pagamento imediatamente** e entre em contato conosco pelos canais oficiais no WhatsApp antes de finalizar a transação.</li>
             </ul>
         </div>
     </div>
@@ -113,34 +113,19 @@
 
     <section id="contato">
         <div class="container">
-            <h2> <span style="color: #fff;">Pronto para Resolver? Fale Conosco Agora!</span></h2>
-            <p>Preencha os dados e nosso especialista entrará em contato em minutos para um orçamento sem compromisso.</p>
-            <div class="form-content">
-                <form action="seu_script_de_processamento.php" method="POST">
-                    
-                    <label for="servico">Qual serviço você precisa?</label>
-                    <select id="servico" name="servico" required>
-                        <option value="">Selecione uma Opção</option>
-                        <option value="xerox_impressao">Digitalização</option>
-                        <option value="xerox_impressao">Impressão</option>
-                        <option value="xerox_impressao">Xerox</option>
-                        <option value="documentacao_veicular">Documentação Veicular (Transferência, CNH, etc.)</option>
-                        <option value="outro">2° ATPV-e</option>
-                        <option value="outro">2° CRV</option>
-                        <option value="outro">2° CRLV-e</option>
-                    </select>
+            <h2><span style="color: #fff;">Pronto para Resolver? Fale Conosco Agora!</span></h2>
+            <p style="color: #fff; margin-bottom: 30px;">Contate-nos pelo WhatsApp e entraremos em contato em minutos para um orçamento sem compromisso.</p>
+            
+            <div class="whatsapp-selection-container">
+                <a href="https://wa.me/5521983634553" target="_blank" class="btn-whatsapp-servico">
+                    <span class="icon">🚗</span>
+                    <span>Documentação Veicular<br><small>(Transferência, CNH, Duda)</small></span>
+                </a>
 
-                    <label for="nome">Nome Completo:</label>
-                    <input type="text" id="nome" name="nome" required>
-                    
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="whatsapp">WhatsApp (Com DDD):</label>
-                    <input type="text" id="whatsapp" name="whatsapp" required>
-                    
-                    <button type="submit">SOLICITAR ORÇAMENTO AGORA!</button>
-                </form>
+                <a href="https://wa.me/5521992099322" target="_blank" class="btn-whatsapp-servico">
+                    <span class="icon">🖨️</span>
+                    <span>Xerox e Gráfica<br><small>(Impressões, Digitalização)</small></span>
+                </a>
             </div>
         </div>
     </section>
@@ -193,8 +178,8 @@
             
             <div class="footer-col">
                 <h3>📞 Fale Conosco</h3>
-                <p><strong>WhatsApp:</strong> <a href="https://wa.me/55983934553" target="_blank" rel="noopenner noreferrer">(21) 983634553</a> SERVIÇOS VEICULARES</p>
-                <p><strong>Whatsapp:</strong> <a href="https://wa.me/55992099322" target="_blank" rel="noopenner noreferrer">(21) 992099322</a> GRÁFICA</p>
+                <p>SERVIÇOS VEICULARES<br><strong>WhatsApp:</strong> <a href="https://wa.me/55983934553" target="_blank" rel="noopenner noreferrer">(21) 983634553</a> </p>
+                <p>GRÁFICA<br><strong>Whatsapp:</strong> <a href="https://wa.me/55992099322" target="_blank" rel="noopenner noreferrer">(21) 992099322</a> </p>
                 <p><strong>E-mail:</strong> jujuxerox96@gmail.com</p>
                 <p class="endereco-rodape">
                     Estrada dos bandeirantes, 28324 - Vargem Grande<br>
@@ -222,20 +207,23 @@
         </div>
 
         <div class="footer-copyright">
-            <p span style="text-align: center;">&copy; 2025 <span style="color: #9400D3;">Juju</span><span style="color: #fff;">Xerox</span><sup>&copy;</sup>. Todos os direitos reservados.</p>
+            <p span style="text-align: center;">&copy; 2025 <span style="color: #fff;">Juju</span><span style="color: #000;">Xerox</span><sup>&copy;</sup>. Todos os direitos reservados.</p>
         </div>
     </footer>
-    <a 
-        href="https://wa.me/+5521992099322" 
-        target="_blank" 
-        class="whatsapp-float"
-    >
-        <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-            alt="WhatsApp" 
-            class="whatsapp-icon"
-        >
-    </a>
+    <div class="whatsapp-wrapper">
+        <div class="whatsapp-popup" id="whatsapp-popup">
+            <div class="popup-header">Fale Conosco</div>
+            <a href="https://wa.me/5521983634553" target="_blank">🚗 Docs. Veiculares</a>
+            <a href="https://wa.me/5521992099322" target="_blank">🖨️ Xerox e Gráfica</a>
+        </div>
+        <button class="whatsapp-float" onclick="toggleWhatsAppPopup()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
     <script src="script.js"></script>
 </body>
 </html>

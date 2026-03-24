@@ -47,3 +47,16 @@ document.addEventListener('click', function(event) {
         }
     }
 });
+function toggleWhatsAppPopup() {
+    const popup = document.getElementById('whatsapp-popup');
+    popup.classList.toggle('active');
+}
+
+// Opcional: Fecha o popup se clicar fora dele
+window.onclick = function(event) {
+    const popup = document.getElementById('whatsapp-popup');
+    const floatBtn = document.querySelector('.whatsapp-float');
+    if (!floatBtn.contains(event.target) && !popup.contains(event.target)) {
+        popup.classList.remove('active');
+    }
+}

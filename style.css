@@ -117,46 +117,72 @@ body {
         .servico-card h3 {
             color: #007bff;
         }
-        /* --- Estilos do Formulário (CTA Final) --- */
-        #contato {
-            background-color: #C8A2C8;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .form-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 600px;
-            margin: 20px auto;
-            text-align: left;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .form-content label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-content input[type="text"], 
-        .form-content input[type="email"],
-        .form-content select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .form-content button {
-            width: 100%;
-            background-color: #28a745;
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            cursor: pointer;
-        }
+       /* --- BLOCO DE CONTATO REESTILIZADO --- */
+#contato {
+    background-color: #C8A2C8;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.form-content {
+    background-color: transparent;
+    padding: 40px 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 30px auto;
+    /* Alterado para center para os botões ficarem alinhados */
+    text-align: center; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Container dos novos botões */
+.whatsapp-selection-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilo dos Botões Verdes de WhatsApp */
+.btn-whatsapp-servico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%; /* Ajusta largura para mobile */
+    max-width: 450px; /* Limite de largura no PC */
+    background-color: #25D366;
+    color: white !important;
+    text-decoration: none !important;
+    padding: 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Sombra suave para destacar do lilás */
+}
+
+.btn-whatsapp-servico:hover {
+    background-color: #128C7E;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.btn-whatsapp-servico .icon {
+    font-size: 28px;
+    margin-right: 15px;
+}
+
+.btn-whatsapp-servico span {
+    text-align: left;
+    line-height: 1.2;
+}
+
+.btn-whatsapp-servico small {
+    display: block;
+    font-weight: normal;
+    font-size: 13px;
+    opacity: 0.9;
+}
         /* --- Estilos da Seção de Localização (Mapa) --- */
         #localizacao {
             padding: 60px 20px;
@@ -174,7 +200,7 @@ body {
         /* --- Estilos do Rodapé (Footer) --- */
         footer {
             background-color: #C8A2C8; /* Cinza Escuro - Fundo do Rodapé */
-            color: white;
+            color: #000;
             padding: 40px 20px 0;
             font-size: 0.9em;
         }
@@ -202,65 +228,78 @@ body {
             padding: 0;
         }
         .footer-col ul li a {
-            color: black; /* Cinza Claro para links */
+            color: #000; /* Cinza Claro para links */
             text-decoration: none;
             line-height: 1.8;
         }
         .footer-col ul li a:hover {
-            color: white;
+            color: blue;
             text-decoration: underline;
         }
         .footer-copyright {
             text-align: center;
             padding: 15px 0;
-            background-color: #212529; /* Fundo mais escuro para a linha final */
+            background-color: #8B008B; /* Fundo mais escuro para a linha final */
         }
 
        
         /* --- Estilos do Botão Flutuante do WhatsApp --- */
 /* --- BLOCO DO WHATSAPP CORRIGIDO --- */
 
-.whatsapp-float {
+/* Estilo do Container (Mantém ele fixo na tela) */
+.whatsapp-wrapper {
     position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* O BOTÃO VERDE (Corpo do botão) */
+.whatsapp-float {
+    position: relative; /* Importante para o pulso se basear nele */
     width: 60px;
     height: 60px;
-    bottom: 30px;
-    right: 30px;
-    background-color: #25d366;
-    color: #fff;
+    background-color: #25D366;
     border-radius: 50%;
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-    text-decoration: none;
-    transition: transform 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
 }
 
 .whatsapp-float:hover {
     transform: scale(1.1);
 }
 
-/* O SEGREDO DA CENTRALIZAÇÃO ESTÁ AQUI */
+.whatsapp-icon {
+    width: 35px;
+    height: 35px;
+    z-index: 2; /* Garante que o ícone fique acima do pulso */
+}
+
+/* O SEGREDO DA CENTRALIZAÇÃO (O seu código com ajustes de cores) */
 .whatsapp-float::before {
     content: "";
     position: absolute;
-    /* Força o início do pulso no centro exato */
     top: 50%;
     left: 50%;
-    /* O translate(-50%, -50%) compensa o tamanho do próprio círculo */
     transform: translate(-50%, -50%);
     
     width: 60px;
     height: 60px;
     background-color: rgba(37, 211, 102, 0.7);
     border-radius: 50%;
-    z-index: -1;
+    z-index: 1; 
     animation: pulse-corrigido 2s infinite;
 }
 
-/* ANIMAÇÃO SINCRONIZADA COM O CENTRO */
+/* ANIMAÇÃO SINCRONIZADA */
 @keyframes pulse-corrigido {
     0% {
         transform: translate(-50%, -50%) scale(1);
@@ -272,11 +311,53 @@ body {
     }
 }
 
-/* Ajuste do ícone interno */
-.whatsapp-icon {
-    width: 35px;
-    height: 35px;
+/* Estilo do Pop-up (Para quando clicar) */
+.whatsapp-popup {
+    display: none;
+    position: absolute;
+    bottom: 75px; /* Sobe um pouco para não cobrir o botão */
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 200px;
+    overflow: hidden;
 }
+
+.whatsapp-popup.active {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+.popup-header {
+    background: #25D366;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.whatsapp-popup a {
+    display: block;
+    padding: 12px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.whatsapp-popup a:hover {
+    background: #f9f9f9;
+    color: #25D366;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
 
 /* --- Estilos da Seção de Vantagens --- */
 #vantagens {
